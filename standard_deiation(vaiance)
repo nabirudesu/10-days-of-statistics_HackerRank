@@ -1,0 +1,37 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'stdDev' function below.
+#
+# The function accepts INTEGER_ARRAY arr as parameter.
+#
+def mean(n,nums):
+    i=0
+    m=0
+    while(i<n):
+        m=m+nums[i]/n
+        i=i+1
+    return m
+
+def stdDev(arr):
+    # Print your answers to 1 decimal place within this function
+    mn=0
+    minus_sum=0
+    mn=mean(len(arr),arr)
+    for item in arr:
+        minus_sum=minus_sum+(item-mn)*(item-mn)
+    stdev=math.sqrt(minus_sum/len(arr))
+    return round(stdev,1)
+if __name__ == '__main__':
+    n = int(input().strip())
+
+    vals = list(map(int, input().rstrip().split()))
+
+    print(stdDev(vals))
+
